@@ -37,11 +37,14 @@ const dealerships = [
   { name: 'Subaru of North Miami', recordId: 'recd8VoJVWPXP0z54' }
 ];
 
-// Fetch the dealership data from the JSON file
-fetch('dealerships.json')
+fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.json')
   .then(response => response.json())
   .then(data => {
-    const dealershipContainer = document.getElementById('dealership-container');
+    // Your code to handle the data
+  })
+  .catch(error => {
+    console.error('Error fetching dealership data:', error);
+  });
 
     // Sort the dealership data alphabetically by name
     data.sort((a, b) => a.name.localeCompare(b.name));
