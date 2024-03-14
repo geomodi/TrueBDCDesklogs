@@ -278,40 +278,29 @@ function startTimer(duration) {
 
 startTimer(15 * 60); // Start a 15-minute countdown
 
-function updateRefreshInfo() {
+function updateRefreshInfo(filterValue = '') {
   const lastRefreshed = new Date().toLocaleTimeString();
-  const totalDealerships = document.querySelectorAll('.dealership-card').length;
-  document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${totalDealerships}`;
+  const dealershipCards = document.querySelectorAll('.dealership-card');
+  let visibleDealerships = 0;
+
+  dealershipCards.forEach(card => {
+    const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
+    if (dealershipName.includes(filterValue.toLowerCase())) {
+      card.style.display = '';
+      visibleDealerships++;
+    } else {
+      card.style.display = 'none';
+    }
+  });
+
+  document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${visibleDealerships}`;
 }
 
 function initializeFilter() {
   const filterInput = document.getElementById('filter-input');
   filterInput.addEventListener('input', () => {
     const filterValue = filterInput.value.toLowerCase();
-    const dealershipContainers = document.querySelectorAll('.dealership-container');
-
-    dealershipContainers.forEach(container => {
-      const dealershipCards = container.querySelectorAll('.dealership-card');
-      let hasVisibleCard = false;
-
-      dealershipCards.forEach(card => {
-        const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
-        if (dealershipName.includes(filterValue)) {
-          card.style.display = '';
-          hasVisibleCard = true;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      if (hasVisibleCard) {
-        container.style.display = '';
-      } else {
-        container.style.display = 'none';
-      }
-    });
-
-    updateRefreshInfo(); // Update the total dealerships count after filtering
+    updateRefreshInfo(filterValue);
   });
 }
 
