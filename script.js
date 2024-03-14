@@ -37,7 +37,7 @@ const dealerships = [
   { name: 'Subaru of North Miami', recordId: 'recd8VoJVWPXP0z54' }
 ];
 
-('https://gist.github.com/geomodi/6060b8f6170ce8872f6364648d0f72e7/raw/dealerships.json')
+fetch('https://gist.github.com/geomodi/6060b8f6170ce8872f6364648d0f72e7/raw/dealerships.json')
   .then(response => response.json())
   .then(data => {
     // Your code to handle the data
