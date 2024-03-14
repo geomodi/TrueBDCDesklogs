@@ -45,30 +45,6 @@ fetch('https://gist.githubusercontent.com/6060b8f6170ce8872f6364648d0f72e7/raw/d
     // Sort the dealership data alphabetically by name
     data.sort((a, b) => a.name.localeCompare(b.name));
 
-    // Generate HTML markup for each dealership
-    const dealershipCardsHTML = data.map(dealership => `
-      <div class="dealership-card">
-        <div class="logo-container">
-          <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
-        </div>
-        <div id="${dealership.chartId}" class="chart"></div>
-      </div>
-    `).join('');
-
-    // Append the dealership cards to the main container
-    dealershipContainer.innerHTML = dealershipCardsHTML;
-
-    // Update refresh info and filter functionality
-    updateRefreshInfo();
-    initializeFilter();
-  })
-  .catch(error => {
-    console.error('Error fetching dealership data:', error);
-  });
-
-    // Sort the dealership data alphabetically by name
-    data.sort((a, b) => a.name.localeCompare(b.name));
-
     // Merge the data from the dealerships array and the dealerships.json file
     const mergedDealerships = data.map(dealership => {
       const matchingDealership = dealerships.find(d => d.name === dealership.name);
@@ -99,7 +75,7 @@ fetch('https://gist.githubusercontent.com/6060b8f6170ce8872f6364648d0f72e7/raw/d
           <div id="${dealership.chartId}" class="chart"></div>
         </div>
       `).join('');
-    
+
       const containerHTML = `
         <div class="dealership-container">
           ${cardsHTML}
@@ -107,71 +83,53 @@ fetch('https://gist.githubusercontent.com/6060b8f6170ce8872f6364648d0f72e7/raw/d
       `;
       dealershipContainersHTML.push(containerHTML);
     }
-    
+
     // Add slide-down animation to the header
     const header = document.querySelector('header');
     window.addEventListener('load', () => {
-        setTimeout(() => {
-            header.classList.add('slide-down');
-        }, 100);
+      setTimeout(() => {
+        header.classList.add('slide-down');
+      }, 100);
     });
-    
+
     // Append the dealership containers to the main container
     dealershipContainer.innerHTML = dealershipContainersHTML.join('');
+
     let countdownInterval;
-    const timerElement = document.getElementById('timer');
-    const refreshInfoElement = document.getElementById('refresh-info');
-    
-    function startTimer(duration) {
-        let timer = duration, minutes, seconds;
-        countdownInterval = setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-    
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-    
-            timerElement.textContent = minutes + ":" + seconds;
-    
-            if (--timer < 0) {
-                clearInterval(countdownInterval);
-                location.reload(); // Refresh the page
-            }
-        }, 1000);
-    }
-    
     const timerValueElement = document.getElementById('timer-value');
-    
+
     function startTimer(duration) {
-        let timer = duration, minutes, seconds;
-        countdownInterval = setInterval(() => {
-            minutes = parseInt(timer / 60, 10);
-            seconds = parseInt(timer % 60, 10);
-    
-            minutes = minutes < 10 ? "0" + minutes : minutes;
-            seconds = seconds < 10 ? "0" + seconds : seconds;
-    
-            timerValueElement.textContent = minutes + ":" + seconds; // Update the timer value
-    
-            if (--timer < 0) {
-                clearInterval(countdownInterval);
-                location.reload(); // Refresh the page
-            }
-        }, 1000);
+      let timer = duration, minutes, seconds;
+      countdownInterval = setInterval(() => {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
+
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerValueElement.textContent = minutes + ":" + seconds; // Update the timer value
+
+        if (--timer < 0) {
+          clearInterval(countdownInterval);
+          location.reload(); // Refresh the page
+        }
+      }, 1000);
     }
 
-    startTimer(15 * 60); // Start a 15-minute countdow
+    startTimer(15 * 60); // Start a 15-minute countdown
+
     function updateRefreshInfo() {
       const lastRefreshed = new Date().toLocaleTimeString();
       const totalDealerships = document.querySelectorAll('.dealership-card').length;
       document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${totalDealerships}`;
     }
+
     function initializeFilter() {
       const filterInput = document.getElementById('filter-input');
       filterInput.addEventListener('input', () => {
         const filterValue = filterInput.value.toLowerCase();
         const dealershipCards = document.querySelectorAll('.dealership-card');
-    
+
         dealershipCards.forEach(card => {
           const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
           if (dealershipName.includes(filterValue)) {
@@ -182,16 +140,16 @@ fetch('https://gist.githubusercontent.com/6060b8f6170ce8872f6364648d0f72e7/raw/d
         });
       });
     }
-        
+
     // After creating and appending the dealership cards
-    dealershipContainer.innerHTML = dealershipContainersHTML.join('');
     updateRefreshInfo(); // Update the refresh information
+
     document.addEventListener('DOMContentLoaded', () => {
-        updateRefreshInfo(); // Update the refresh information on page load
+      updateRefreshInfo(); // Update the refresh information on page load
     });
-    
+
     window.addEventListener('load', () => {
-        updateRefreshInfo(); // Update the refresh information after page refresh
+      updateRefreshInfo(); // Update the refresh information after page refresh
     });
 
     // Fetch data from Airtable and create charts for each dealership
@@ -274,11 +232,11 @@ fetch('https://gist.githubusercontent.com/6060b8f6170ce8872f6364648d0f72e7/raw/d
             });
           })
           .catch(error => {
-            console.error(`Error ing data from Airtable for ${dealership.name}:`, error);
+            console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
           });
       }
     });
   })
   .catch(error => {
-    console.error('Error ing dealership data:', error);
+    console.error('Error fetching dealership data:', error);
   });
