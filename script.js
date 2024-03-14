@@ -37,7 +37,7 @@ const dealerships = [
   { name: 'Subaru of North Miami', recordId: 'recd8VoJVWPXP0z54' }
 ];
 
-fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.json')
+('https://gist.github.com/geomodi/6060b8f6170ce8872f6364648d0f72e7/raw/dealerships.json')
   .then(response => response.json())
   .then(data => {
     // Your code to handle the data
@@ -256,11 +256,11 @@ fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.jso
             });
           })
           .catch(error => {
-            console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
+            console.error(`Error ing data from Airtable for ${dealership.name}:`, error);
           });
       }
     });
   })
   .catch(error => {
-    console.error('Error fetching dealership data:', error);
+    console.error('Error ing dealership data:', error);
   });
