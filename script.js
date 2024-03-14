@@ -288,16 +288,30 @@ function initializeFilter() {
   const filterInput = document.getElementById('filter-input');
   filterInput.addEventListener('input', () => {
     const filterValue = filterInput.value.toLowerCase();
-    const dealershipCards = document.querySelectorAll('.dealership-card');
+    const dealershipContainers = document.querySelectorAll('.dealership-container');
 
-    dealershipCards.forEach(card => {
-      const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
-      if (dealershipName.includes(filterValue)) {
-        card.style.display = '';
+    dealershipContainers.forEach(container => {
+      const dealershipCards = container.querySelectorAll('.dealership-card');
+      let hasVisibleCard = false;
+
+      dealershipCards.forEach(card => {
+        const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
+        if (dealershipName.includes(filterValue)) {
+          card.style.display = '';
+          hasVisibleCard = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      if (hasVisibleCard) {
+        container.style.display = '';
       } else {
-        card.style.display = 'none';
+        container.style.display = 'none';
       }
     });
+
+    updateRefreshInfo(); // Update the total dealerships count after filtering
   });
 }
 
