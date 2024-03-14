@@ -58,9 +58,9 @@ fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.jso
     // Append the dealership cards to the main container
     dealershipContainer.innerHTML = dealershipCardsHTML;
 
-    // Call any other functions that need to run after the data is loaded
+    // Update refresh info and filter functionality
     updateRefreshInfo();
-    // You might also need to reinitialize any event listeners or plugins that depend on the newly added content
+    initializeFilter();
   })
   .catch(error => {
     console.error('Error fetching dealership data:', error);
@@ -161,29 +161,27 @@ fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.jso
     }
 
     startTimer(15 * 60); // Start a 15-minute countdow
-        function updateRefreshInfo() {
-            const lastRefreshed = new Date().toLocaleTimeString();
-            const totalDealerships = document.querySelectorAll('.dealership-card').length;
-            console.log('Last refreshed:', lastRefreshed);
-            console.log('Total dealerships:', totalDealerships);
-            refreshInfoElement.textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${totalDealerships}`;
-        }
-    const filterInput = document.getElementById('filter-input');
-    
-    filterInput.addEventListener('input', () => {
+    function updateRefreshInfo() {
+      const lastRefreshed = new Date().toLocaleTimeString();
+      const totalDealerships = document.querySelectorAll('.dealership-card').length;
+      document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${totalDealerships}`;
+    }
+    function initializeFilter() {
+      const filterInput = document.getElementById('filter-input');
+      filterInput.addEventListener('input', () => {
         const filterValue = filterInput.value.toLowerCase();
         const dealershipCards = document.querySelectorAll('.dealership-card');
     
         dealershipCards.forEach(card => {
-            // Use the alt attribute of the image in the logo-container for filtering
-            const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
-            if (dealershipName.includes(filterValue)) {
-                card.style.display = '';
-            } else {
-                card.style.display = 'none';
-            }
+          const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
+          if (dealershipName.includes(filterValue)) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
         });
-    });
+      });
+    }
         
     // After creating and appending the dealership cards
     dealershipContainer.innerHTML = dealershipContainersHTML.join('');
