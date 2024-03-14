@@ -37,10 +37,30 @@ const dealerships = [
   { name: 'Subaru of North Miami', recordId: 'recd8VoJVWPXP0z54' }
 ];
 
-fetch('https://gist.github.com/geomodi/6060b8f6170ce8872f6364648d0f72e7/raw/dealerships.json')
+fetch('https://gist.githubusercontent.com/your-username/gist-id/raw/filename.json')
   .then(response => response.json())
   .then(data => {
-    // Your code to handle the data
+    const dealershipContainer = document.getElementById('dealership-container');
+
+    // Sort the dealership data alphabetically by name
+    data.sort((a, b) => a.name.localeCompare(b.name));
+
+    // Generate HTML markup for each dealership
+    const dealershipCardsHTML = data.map(dealership => `
+      <div class="dealership-card">
+        <div class="logo-container">
+          <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
+        </div>
+        <div id="${dealership.chartId}" class="chart"></div>
+      </div>
+    `).join('');
+
+    // Append the dealership cards to the main container
+    dealershipContainer.innerHTML = dealershipCardsHTML;
+
+    // Call any other functions that need to run after the data is loaded
+    updateRefreshInfo();
+    // You might also need to reinitialize any event listeners or plugins that depend on the newly added content
   })
   .catch(error => {
     console.error('Error fetching dealership data:', error);
