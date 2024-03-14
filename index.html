@@ -5,211 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dealership Analytics</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.4/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.4/js/jquery.dataTables.min.js"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 <body>
-    <div class="container">
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Benton%20Nissan%20of%20ColumbiaR.png?raw=true" alt="Benton Nissan of Columbia" class="dealership-logo">
-                </div>
-                <div id="benton-nissan-of-columbia-chart" class="chart"></div>
-            </div>
-
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Betten%20Baker%20Buick%20GMC%20Rounded.png?raw=true" alt="Benton Nissan of Columbia" class="dealership-logo">
-                </div>
-                <div id="betten-baker-buick-gmc-chart" class="chart"></div>
-            </div>
-            
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Cronic%20CDJR%20Rounded.png?raw=true" alt="Benton Nissan of Columbia" class="dealership-logo">
-                </div>
-                <div id="cronic-cdjr-chart" class="chart"></div>
-            </div>
+<header>
+    <div class="header-logo-container">
+        <img src="https://github.com/geomodi/stuff/blob/main/Worldwide-logo.png?raw=true" alt="Logo" class="header-logo">
+    </div>
+    <h1 class="title">
+        <span class="animate__animated animate__fadeIn">Dealership</span>
+        <span class="animate__animated animate__fadeIn animate__delay-1s">Desklog</span>
+        <span class="animate__animated animate__fadeIn animate__delay-2s">Data</span>
+    </h1>
+</header>
+    <div class="refresh-timer-container">
+        <div class="timer" id="timer">
+            <span id="timer-value">15:00</span>
+            <span class="refresh-text">for the next refresh</span>
         </div>
-
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Cronic%20Nissan%20Rounded.png?raw=true" alt="Cronic Nissan" class="dealership-logo">
-                </div>
-                <div id="cronic-nissan-chart" class="chart"></div>
-            </div>
-
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Dena%20Motros%20Rounded.png?raw=true" alt="Dena Motors" class="dealership-logo">
-                </div>
-                <div id="dena-motors-chart" class="chart"></div>
-            </div>
-
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Ford%20of%20Fayetteville%20Rounded.png?raw=true" alt="Ford of Fayetteville" class="dealership-logo">
-                </div>
-                <div id="ford-of-fayetteville-chart" class="chart"></div>
-            </div>
+        <div class="refresh-info" id="refresh-info">Last refreshed: -- | Total dealerships: --</div>
+        <div class="filter">
+            <input type="text" id="filter-input" placeholder="Filter dealerships...">
         </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Frankfort%20Ford%20Lincoln%20Rounded.png?raw=true" alt="Frankfort Ford Lincoln" class="dealership-logo">
-                </div>
-                <div id="frankfort-ford-lincoln-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Hutchinson%20Kia%20of%20Albany%20Rounded.png?raw=true" alt="Hutchinson Kia of Albany" class="dealership-logo">
-                </div>
-                <div id="hutchinson-kia-of-albany-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Hutchinon%20Kia%20of%20Macon%20Rounded.png?raw=true" alt="Hutchinson Kia of Macon" class="dealership-logo">
-                </div>
-                <div id="hutchinson-kia-of-macon-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Keffer%20Volkswagen%20Rounded.png?raw=true" alt="Keffer Volkswagen" class="dealership-logo">
-                </div>
-                <div id="keffer-volkswagen-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Mike%20Reichenbach%20Ford%20Lincoln%20Rounded.png?raw=true" alt="Mike Reichenbach Ford" class="dealership-logo">
-                </div>
-                <div id="mike-reichenbach-ford-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Mike%20Reichenbach%20Volkswagen%20Rounded.png?raw=true" alt="Mike Reichenbach Volkswagen" class="dealership-logo">
-                </div>
-                <div id="mike-reichenbach-volkswagen-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Hendersonville%20Rounded.png?raw=true" alt="Nissan of Hendersonville" class="dealership-logo">
-                </div>
-                <div id="nissan-of-hendersonville-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Orangeburg%20Rounded.png?raw=true" alt="Nissan of Orangeburg" class="dealership-logo">
-                </div>
-                <div id="nissan-of-orangeburg-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Richmond%20Rounded.png?raw=true" alt="Nissan of Richmond" class="dealership-logo">
-                </div>
-                <div id="nissan-of-richmond-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Rusty%20Wallace%20Kia%20Alcoa%20Rounded.png?raw=true" alt="Rusty Wallace Kia" class="dealership-logo">
-                </div>
-                <div id="rusty-wallace-kia-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Santee%20CDJR%20Rounded.png?raw=true" alt="Santee CDJR" class="dealership-logo">
-                </div>
-                <div id="santee-cdjr-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Santee%20Ford%20Rounded.png?raw=true" alt="Santee Ford" class="dealership-logo">
-                </div>
-                <div id="santee-ford-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Summerville%20Ford%20Rounded.png?raw=true" alt="Summerville Ford" class="dealership-logo">
-                </div>
-                <div id="summerville-ford-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Tenneson%20Nissan%20Rounded.png?raw=true" alt="Tenneson Nissan" class="dealership-logo">
-                </div>
-                <div id="tenneson-nissan-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Terry%20Cullen%20Southlake%20Chevrolet%20Rounded.png?raw=true" alt="Terry Cullen Southlake Chevrolet" class="dealership-logo">
-                </div>
-                <div id="terry-cullen-southlake-chevrolet-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Vero%20Beach%20Mitsubishi%20Rounded.png?raw=true" alt="Vero Beach Mitsubishi" class="dealership-logo">
-                </div>
-                <div id="vero-beach-mitsubishi-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Granbury%20Nissan%20Rounded.png?raw=true" alt="Granbury Nissan" class="dealership-logo">
-                </div>
-                <div id="granbury-nissan-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Lehman%20Hyundai%20Genesis%20Rounded.png?raw=true" alt="Lehman Hyundai Genesis" class="dealership-logo">
-                </div>
-                <div id="lehman-hyundai-genesis-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Mike%20Terry%20Chevrolet%20Rounded.png?raw=true" alt="Mike Terry Chevrolet GMC" class="dealership-logo">
-                </div>
-                <div id="mike-terry-chevrolet-gmc-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Mike%20Terry%20Ford%20Rounded.png?raw=true" alt="Mike Terry Ford" class="dealership-logo">
-                </div>
-                <div id="mike-terry-ford-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/McClinton%20Chevrolet%20Mitsubishi%20Rounded.png?raw=true" alt="McClinton Chevrolet Mitsubishi" class="dealership-logo">
-                </div>
-                <div id="mcclinton-chevrolet-mitsubishi-chart" class="chart"></div>
-            </div>
-        </div>
-        <div class="dealership-container">
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Springfield%20Hyundai%20Rounded.png?raw=true" alt="Springfield Hyundai" class="dealership-logo">
-                </div>
-                <div id="springfield-hyundai-chart" class="chart"></div>
-            </div>
-            <div class="dealership-card">
-                <div class="logo-container">
-                    <img src="https://github.com/geomodi/stuff/blob/main/Subaru%20of%20North%20Miami%20Rounded.png?raw=true" alt="Subaru of North Miami" class="dealership-logo">
-                </div>
-                <div id="subaru-of-north-miami-chart" class="chart"></div>
-            </div>
+    </div>
+    <div class="content">
+        <div class="container">
+            <div id="dealership-container"></div>
         </div>
     </div>
     <script src="script.js"></script>
