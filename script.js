@@ -41,162 +41,226 @@ const dealershipsData = [
   {
     "name": "Benson Hyundai",
     "logo": "https://github.com/geomodi/stuff/blob/main/Benson%20Hyundai%20Rounded.png?raw=true",
-    "chartId": "benson-hyundai-chart"
+    "chartId": "benson-hyundai-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
   },
   {
     "name": "Benton Nissan of Columbia",
     "logo": "https://github.com/geomodi/stuff/blob/main/Benton%20Nissan%20of%20ColumbiaR.png?raw=true",
-    "chartId": "benton-nissan-of-columbia-chart"
+    "chartId": "benton-nissan-of-columbia-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Betten Baker Buick GMC",
     "logo": "https://github.com/geomodi/stuff/blob/main/Betten%20Baker%20Buick%20GMC%20Rounded.png?raw=true",
-    "chartId": "betten-baker-buick-gmc-chart"
+    "chartId": "betten-baker-buick-gmc-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Cronic CDJR",
     "logo": "https://github.com/geomodi/stuff/blob/main/Cronic%20CDJR%20Rounded.png?raw=true",
-    "chartId": "cronic-cdjr-chart"
+    "chartId": "cronic-cdjr-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Cronic Nissan",
     "logo": "https://github.com/geomodi/stuff/blob/main/Cronic%20Nissan%20Rounded.png?raw=true",
-    "chartId": "cronic-nissan-chart"
+    "chartId": "cronic-nissan-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Dena Motors",
     "logo": "https://github.com/geomodi/stuff/blob/main/Dena%20Motros%20Rounded.png?raw=true",
-    "chartId": "dena-motors-chart"
+    "chartId": "dena-motors-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Ford of Fayetteville",
     "logo": "https://github.com/geomodi/stuff/blob/main/Ford%20of%20Fayetteville%20Rounded.png?raw=true",
-    "chartId": "ford-of-fayetteville-chart"
+    "chartId": "ford-of-fayetteville-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Frankfort Ford Lincoln",
     "logo": "https://github.com/geomodi/stuff/blob/main/Frankfort%20Ford%20Lincoln%20Rounded.png?raw=true",
-    "chartId": "frankfort-ford-lincoln-chart"
+    "chartId": "frankfort-ford-lincoln-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Granbury Nissan",
     "logo": "https://github.com/geomodi/stuff/blob/main/Granbury%20Nissan%20Rounded.png?raw=true",
-    "chartId": "granbury-nissan-chart"
+    "chartId": "granbury-nissan-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Hutchinson Kia of Albany",
     "logo": "https://github.com/geomodi/stuff/blob/main/Hutchinson%20Kia%20of%20Albany%20Rounded.png?raw=true",
-    "chartId": "hutchinson-kia-of-albany-chart"
+    "chartId": "hutchinson-kia-of-albany-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Hutchinson Kia of Macon",
     "logo": "https://github.com/geomodi/stuff/blob/main/Hutchinon%20Kia%20of%20Macon%20Rounded.png?raw=true",
-    "chartId": "hutchinson-kia-of-macon-chart"
+    "chartId": "hutchinson-kia-of-macon-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Keffer Volkswagen",
     "logo": "https://github.com/geomodi/stuff/blob/main/Keffer%20Volkswagen%20Rounded.png?raw=true",
-    "chartId": "keffer-volkswagen-chart"
+    "chartId": "keffer-volkswagen-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Lehman Hyundai Genesis",
     "logo": "https://github.com/geomodi/stuff/blob/main/Lehman%20Hyundai%20Genesis%20Rounded.png?raw=true",
-    "chartId": "lehman-hyundai-genesis-chart"
+    "chartId": "lehman-hyundai-genesis-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Lou Bachrodt Chevrolet",
     "logo": "https://github.com/geomodi/stuff/blob/main/Lou%20Bachrodt%20Chevrolet%20Rounded.png?raw=true",
-    "chartId": "lou-bachrodt-chevrolet-chart"
+    "chartId": "lou-bachrodt-chevrolet-chart",
+    "crm": "Drive Centric",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
   },
   {
     "name": "McClinton Chevrolet Mitsubishi",
     "logo": "https://github.com/geomodi/stuff/blob/main/McClinton%20Chevrolet%20Mitsubishi%20Rounded.png?raw=true",
-    "chartId": "mcclinton-chevrolet-mitsubishi-chart"
+    "chartId": "mcclinton-chevrolet-mitsubishi-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Mike Reichenbach Ford",
     "logo": "https://github.com/geomodi/stuff/blob/main/Mike%20Reichenbach%20Ford%20Lincoln%20Rounded.png?raw=true",
-    "chartId": "mike-reichenbach-ford-chart"
+    "chartId": "mike-reichenbach-ford-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Mike Reichenbach Volkswagen",
     "logo": "https://github.com/geomodi/stuff/blob/main/Mike%20Reichenbach%20Volkswagen%20Rounded.png?raw=true",
-    "chartId": "mike-reichenbach-volkswagen-chart"
+    "chartId": "mike-reichenbach-volkswagen-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Mike Terry Chevrolet GMC",
     "logo": "https://github.com/geomodi/stuff/blob/main/Mike%20Terry%20Chevrolet%20Rounded.png?raw=true",
-    "chartId": "mike-terry-chevrolet-gmc-chart"
+    "chartId": "mike-terry-chevrolet-gmc-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Mike Terry Ford",
     "logo": "https://github.com/geomodi/stuff/blob/main/Mike%20Terry%20Ford%20Rounded.png?raw=true",
-    "chartId": "mike-terry-ford-chart"
+    "chartId": "mike-terry-ford-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Nissan of Hendersonville",
     "logo": "https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Hendersonville%20Rounded.png?raw=true",
-    "chartId": "nissan-of-hendersonville-chart"
+    "chartId": "nissan-of-hendersonville-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Nissan of Orangeburg",
     "logo": "https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Orangeburg%20Rounded.png?raw=true",
-    "chartId": "nissan-of-orangeburg-chart"
+    "chartId": "nissan-of-orangeburg-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Nissan of Richmond",
     "logo": "https://github.com/geomodi/stuff/blob/main/Nissan%20of%20Richmond%20Rounded.png?raw=true",
-    "chartId": "nissan-of-richmond-chart"
-  },
-  {
-    "name": "Rusty Wallace Kia",
-    "logo": "https://github.com/geomodi/stuff/blob/main/Rusty%20Wallace%20Kia%20Alcoa%20Rounded.png?raw=true",
-    "chartId": "rusty-wallace-kia-chart"
+    "chartId": "nissan-of-richmond-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Rockhill Nissan",
     "logo": "https://github.com/geomodi/stuff/blob/main/Rockhill%20Nissan%20Rounded.png?raw=true",
-    "chartId": "rockhill-nissan-chart"
+    "chartId": "rockhill-nissan-chart",
+    "crm": "Drive Centric",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
+  },
+  {
+    "name": "Rusty Wallace Kia",
+    "logo": "https://github.com/geomodi/stuff/blob/main/Rusty%20Wallace%20Kia%20Alcoa%20Rounded.png?raw=true",
+    "chartId": "rusty-wallace-kia-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Santee CDJR",
     "logo": "https://github.com/geomodi/stuff/blob/main/Santee%20CDJR%20Rounded.png?raw=true",
-    "chartId": "santee-cdjr-chart"
+    "chartId": "santee-cdjr-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Santee Ford",
     "logo": "https://github.com/geomodi/stuff/blob/main/Santee%20Ford%20Rounded.png?raw=true",
-    "chartId": "santee-ford-chart"
+    "chartId": "santee-ford-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Springfield Hyundai",
     "logo": "https://github.com/geomodi/stuff/blob/main/Springfield%20Hyundai%20Rounded.png?raw=true",
-    "chartId": "springfield-hyundai-chart"
+    "chartId": "springfield-hyundai-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Subaru of North Miami",
     "logo": "https://github.com/geomodi/stuff/blob/main/Subaru%20of%20North%20Miami%20Rounded.png?raw=true",
-    "chartId": "subaru-of-north-miami-chart"
+    "chartId": "subaru-of-north-miami-chart",
+    "crm": "VinSolutions",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
   },
   {
     "name": "Summerville Ford",
     "logo": "https://github.com/geomodi/stuff/blob/main/Summerville%20Ford%20Rounded.png?raw=true",
-    "chartId": "summerville-ford-chart"
+    "chartId": "summerville-ford-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Tenneson Nissan",
     "logo": "https://github.com/geomodi/stuff/blob/main/Tenneson%20Nissan%20Rounded.png?raw=true",
-    "chartId": "tenneson-nissan-chart"
+    "chartId": "tenneson-nissan-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Terry Cullen Southlake Chevrolet",
     "logo": "https://github.com/geomodi/stuff/blob/main/Terry%20Cullen%20Southlake%20Chevrolet%20Rounded.png?raw=true",
-    "chartId": "terry-cullen-southlake-chevrolet-chart"
+    "chartId": "terry-cullen-southlake-chevrolet-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Vero Beach Mitsubishi",
     "logo": "https://github.com/geomodi/stuff/blob/main/Vero%20Beach%20Mitsubishi%20Rounded.png?raw=true",
-    "chartId": "vero-beach-mitsubishi-chart"
+    "chartId": "vero-beach-mitsubishi-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   }
 ];
 
@@ -220,6 +284,9 @@ const dealershipCardsHTML = mergedDealerships.map(dealership => `
     <div class="logo-container">
       <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
     </div>
+    <div class="crm-logo-container">
+      <img src="${dealership.crmLogo}" alt="${dealership.crm}" class="crm-logo">
+    </div>
     <div id="${dealership.chartId}" class="chart"></div>
   </div>
 `).join('');
@@ -232,6 +299,9 @@ for (let i = 0; i < mergedDealerships.length; i += 3) {
       <div class="logo-container">
         <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
       </div>
+      <div class="crm-logo-container">
+        <img src="${dealership.crmLogo}" alt="${dealership.crm}" class="crm-logo">
+      </div>
       <div id="${dealership.chartId}" class="chart"></div>
     </div>
   `).join('');
@@ -243,7 +313,9 @@ for (let i = 0; i < mergedDealerships.length; i += 3) {
   `;
   dealershipContainersHTML.push(containerHTML);
 }
-
+// After creating and appending the dealership cards
+initializeFilter();
+updateRefreshInfo(); // Update the refresh information
 // Add slide-down animation to the header
 const header = document.querySelector('header');
 window.addEventListener('load', () => {
@@ -271,6 +343,7 @@ function startTimer(duration) {
 
     if (--timer < 0) {
       clearInterval(countdownInterval);
+      updateRefreshInfo(); // Update the refresh information before refreshing the page
       location.reload(); // Refresh the page
     }
   }, 1000);
@@ -280,22 +353,29 @@ startTimer(15 * 60); // Start a 15-minute countdown
 
 function updateRefreshInfo(filterValue = '') {
   const lastRefreshed = new Date().toLocaleTimeString();
-  const dealershipCards = document.querySelectorAll('.dealership-card');
+  const dealershipContainers = document.querySelectorAll('.dealership-container');
   let visibleDealerships = 0;
 
-  dealershipCards.forEach(card => {
-    const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
-    if (dealershipName.includes(filterValue.toLowerCase())) {
-      card.style.display = '';
-      visibleDealerships++;
-    } else {
-      card.style.display = 'none';
-    }
+  dealershipContainers.forEach(container => {
+    const dealershipCards = container.querySelectorAll('.dealership-card');
+    let visibleCards = 0;
+
+    dealershipCards.forEach(card => {
+      const dealershipName = card.querySelector('.logo-container img').alt.toLowerCase();
+      if (dealershipName.includes(filterValue.toLowerCase())) {
+        card.style.display = '';
+        visibleCards++;
+        visibleDealerships++;
+      } else {
+        card.style.display = 'none';
+      }
+    });
+
+    container.style.display = visibleCards > 0 ? '' : 'none';
   });
 
   document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${visibleDealerships}`;
 }
-
 function initializeFilter() {
   const filterInput = document.getElementById('filter-input');
   filterInput.addEventListener('input', () => {
