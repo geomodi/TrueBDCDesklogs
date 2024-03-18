@@ -4,12 +4,10 @@ const tableName = 'Dealership Appts';
 
 const dealerships = [
   { name: 'Benson Hyundai', recordId: 'recUFsOZStjjMzyv1' },
-  { name: 'Benton Nissan of Columbia', recordId: 'recq1Lb3kjH753BUl' },
   { name: 'Betten Baker Buick GMC', recordId: 'recjC2pyAQokLn6d2' },
   { name: 'Cronic CDJR', recordId: 'rec6OKhBfVsVaWgSy' },
   { name: 'Cronic Nissan', recordId: 'rec1qkMYFMeDZ8YjA' },
   { name: 'Dena Motors', recordId: 'recBCiZTCSCOkB9a4' },
-  { name: 'Ford of Fayetteville', recordId: 'recEdfMqPzpkWPTyv' },
   { name: 'Frankfort Ford Lincoln', recordId: 'recU6rjo7ebC7Z2JE' },
   { name: 'Hutchinson Kia of Albany', recordId: 'recd8gFBESFVrgPtQ' },
   { name: 'Hutchinson Kia of Macon', recordId: 'recqpPFFnZK43coVH' },
@@ -45,13 +43,6 @@ const dealershipsData = [
     "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
   },
   {
-    "name": "Benton Nissan of Columbia",
-    "logo": "https://github.com/geomodi/stuff/blob/main/Benton%20Nissan%20of%20ColumbiaR.png?raw=true",
-    "chartId": "benton-nissan-of-columbia-chart",
-    "crm": "eLeads",
-    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
-  },
-  {
     "name": "Betten Baker Buick GMC",
     "logo": "https://github.com/geomodi/stuff/blob/main/Betten%20Baker%20Buick%20GMC%20Rounded.png?raw=true",
     "chartId": "betten-baker-buick-gmc-chart",
@@ -76,13 +67,6 @@ const dealershipsData = [
     "name": "Dena Motors",
     "logo": "https://github.com/geomodi/stuff/blob/main/Dena%20Motros%20Rounded.png?raw=true",
     "chartId": "dena-motors-chart",
-    "crm": "eLeads",
-    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
-  },
-  {
-    "name": "Ford of Fayetteville",
-    "logo": "https://github.com/geomodi/stuff/blob/main/Ford%20of%20Fayetteville%20Rounded.png?raw=true",
-    "chartId": "ford-of-fayetteville-chart",
     "crm": "eLeads",
     "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
