@@ -5,6 +5,7 @@ const tableName = 'Dealership Appts';
 const dealerships = [
   { name: 'Benson Hyundai', recordId: 'recUFsOZStjjMzyv1' },
   { name: 'Betten Baker Buick GMC', recordId: 'recjC2pyAQokLn6d2' },
+  { name: 'Campus Ford', recordId: 'recudsPmrgAKu1qMw' },
   { name: 'Cronic CDJR', recordId: 'rec6OKhBfVsVaWgSy' },
   { name: 'Cronic Nissan', recordId: 'rec1qkMYFMeDZ8YjA' },
   { name: 'Dena Motors', recordId: 'recBCiZTCSCOkB9a4' },
@@ -46,6 +47,13 @@ const dealershipsData = [
     "name": "Betten Baker Buick GMC",
     "logo": "https://github.com/geomodi/stuff/blob/main/Betten%20Baker%20Buick%20GMC%20Rounded.png?raw=true",
     "chartId": "betten-baker-buick-gmc-chart",
+    "crm": "eLeads",
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
+  },
+  {
+    "name": "Campus Ford",
+    "logo": "https://github.com/geomodi/stuff/blob/main/Campus%20Ford%20Rounded.png?raw=true",
+    "chartId": "campus-ford-chart",
     "crm": "eLeads",
     "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
@@ -253,25 +261,12 @@ const mergedDealerships = dealershipsData.map(dealership => {
     recordId: matchingDealership ? matchingDealership.recordId : null
   };
 });
-
 // Generate HTML markup for each dealership
-const dealershipCardsHTML = mergedDealerships.map(dealership => `
-  <div class="dealership-card">
-    <div class="logo-container">
-      <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
-    </div>
-    <div class="crm-logo-container">
-      <img src="${dealership.crmLogo}" alt="${dealership.crm}" class="crm-logo">
-    </div>
-    <div id="${dealership.chartId}" class="chart"></div>
-  </div>
-`).join('');
-
 const dealershipContainersHTML = [];
 for (let i = 0; i < mergedDealerships.length; i += 3) {
   const dealershipsSlice = mergedDealerships.slice(i, i + 3);
   const cardsHTML = dealershipsSlice.map(dealership => `
-    <div class="dealership-card">
+    <div class="dealership-card" data-dealership="${dealership.name}">
       <div class="logo-container">
         <img src="${dealership.logo}" alt="${dealership.name}" class="dealership-logo">
       </div>
@@ -289,9 +284,11 @@ for (let i = 0; i < mergedDealerships.length; i += 3) {
   `;
   dealershipContainersHTML.push(containerHTML);
 }
+
 // After creating and appending the dealership cards
 initializeFilter();
 updateRefreshInfo(); // Update the refresh information
+
 // Add slide-down animation to the header
 const header = document.querySelector('header');
 window.addEventListener('load', () => {
@@ -390,68 +387,111 @@ mergedDealerships.forEach(function(dealership) {
         const dealershipName = record['Dealership'] || '';
         console.log('Dealership:', dealershipName);
 
-        const confirmed = parseInt(record['Confirmed']) || 0;
-        const shown = parseInt(record['Shown']) || 0;
-        const missed = parseInt(record['Missed']) || 0;
-        const overdue = parseInt(record['Overdue']) || 0;
-        const apptsToday = parseInt(record['Appointments for Today']) || 0;
-        const apptsTomorrow = parseInt(record['Appointments for Tomorrow']) || 0;
-        const appts3rdDay = parseInt(record['3rd Day Appointments']) || 0;
+        const createdTimestamp = record['Created'];
+        const currentDate = new Date();
 
-    // Create Highcharts chart for the dealership
-    const chartId = `${dealership.name.replace(/\s+/g, '-').toLowerCase()}-chart`;
-    console.log('Chart ID:', chartId);
+        // Parse the created timestamp into a Date object
+        const parsedTimestamp = parseTimestamp(createdTimestamp);
 
-    Highcharts.chart(chartId, {
-      chart: {
-        type: 'bar'
-      },
-      title: {
-        text: `${dealershipName}`,
-        style: {
-          fontFamily: 'Poppins', // Set the font family for the title
-          fontWeight: 'normal'
-        }
-      },
-      xAxis: {
-        categories: ['Confirmed', 'Shown', 'Missed', 'Overdue', 'Today', 'Tomorrow', '3rd Day'],
-        title: {
-          text: null
-        }
-      },
-      yAxis: {
-        title: {
-          text: ''
-        },
-        labels: {
-          enabled: false
-        },
-        gridLineWidth: 0
-      },
-      tooltip: {
-        enabled: false
-      },
-      plotOptions: {
-        bar: {
-          dataLabels: {
-            enabled: true
+        // Check if the parsed timestamp matches the current date
+        if (parsedTimestamp && isSameDate(parsedTimestamp, currentDate)) {
+          const confirmed = parseInt(record['Confirmed']) || 0;
+          const shown = parseInt(record['Shown']) || 0;
+          const missed = parseInt(record['Missed']) || 0;
+          const overdue = parseInt(record['Overdue']) || 0;
+          const apptsToday = parseInt(record['Appointments for Today']) || 0;
+          const apptsTomorrow = parseInt(record['Appointments for Tomorrow']) || 0;
+          const appts3rdDay = parseInt(record['3rd Day Appointments']) || 0;
+
+          // Create Highcharts chart for the dealership
+          const chartId = `${dealership.name.replace(/\s+/g, '-').toLowerCase()}-chart`;
+          console.log('Chart ID:', chartId);
+
+          Highcharts.chart(chartId, {
+            chart: {
+              type: 'bar'
+            },
+            title: {
+              text: `${dealershipName}`,
+              style: {
+                fontFamily: 'Poppins', // Set the font family for the title
+                fontWeight: 'normal'
+              }
+            },
+            xAxis: {
+              categories: ['Confirmed', 'Shown', 'Missed', 'Overdue', 'Today', 'Tomorrow', '3rd Day'],
+              title: {
+                text: null
+              }
+            },
+            yAxis: {
+              title: {
+                text: ''
+              },
+              labels: {
+                enabled: false
+              },
+              gridLineWidth: 0
+            },
+            tooltip: {
+              enabled: false
+            },
+            plotOptions: {
+              bar: {
+                dataLabels: {
+                  enabled: true
+                }
+              }
+            },
+            series: [{
+              name: 'Desklog Data',
+              data: [confirmed, shown, missed, overdue, apptsToday, apptsTomorrow, appts3rdDay]
+            }],
+            legend: {
+              enabled: true
+            },
+            credits: {
+              enabled: false
+            }
+          });
+        } else {
+          console.log(`Skipping dealership ${dealershipName} as the created timestamp does not match the current date.`);
+          const dealershipCard = document.querySelector(`[data-dealership="${dealershipName}"]`);
+          if (dealershipCard) {
+            dealershipCard.style.display = 'none';
           }
         }
-      },
-      series: [{
-        name: 'Desklog Data',
-        data: [confirmed, shown, missed, overdue, apptsToday, apptsTomorrow, appts3rdDay]
-      }],
-      legend: {
-        enabled: true
-      },
-      credits: {
-        enabled: false
-      }
-    });
-  })
-  .catch(error => {
-    console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
-  });
-}
+      })
+      .catch(error => {
+        console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
+      });
+  }
 });
+
+// Helper function to parse the timestamp into a Date object
+function parseTimestamp(timestamp) {
+  const formats = [
+    'M/D/YYYY H:mmA',
+    'M/D/YYYY',
+    'YYYY-MM-DD',
+    // Add more formats if needed
+  ];
+
+  for (const format of formats) {
+    const parsedDate = new Date(timestamp);
+    if (!isNaN(parsedDate.getTime())) {
+      return parsedDate;
+    }
+  }
+
+  return null;
+}
+
+// Helper function to check if two dates are the same (ignoring time)
+function isSameDate(date1, date2) {
+  return (
+    date1.getFullYear() === date2.getFullYear() &&
+    date1.getMonth() === date2.getMonth() &&
+    date1.getDate() === date2.getDate()
+  );
+}
