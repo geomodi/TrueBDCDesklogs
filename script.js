@@ -199,13 +199,6 @@ const dealershipsData = [
     "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
   },
   {
-    "name": "Rusty Wallace Kia",
-    "logo": "https://github.com/geomodi/stuff/blob/main/Rusty%20Wallace%20Kia%20Alcoa%20Rounded.png?raw=true",
-    "chartId": "rusty-wallace-kia-chart",
-    "crm": "eLeads",
-    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
-  },
-  {
     "name": "Santee CDJR",
     "logo": "https://github.com/geomodi/stuff/blob/main/Santee%20CDJR%20Rounded.png?raw=true",
     "chartId": "santee-cdjr-chart",
