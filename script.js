@@ -21,7 +21,6 @@ const dealerships = [
   { name: 'Nissan of Orangeburg', recordId: 'recf2uJQMgUxfbpOj' },
   { name: 'Nissan of Richmond', recordId: 'reci4vBMhTvIG1zUY' },
   { name: 'Rockhill Nissan', recordId: 'recVSRxSvob2EKGfJ' },
-  { name: 'Rusty Wallace Kia', recordId: 'rec9ZeVVkv5foEIP5' },
   { name: 'Santee CDJR', recordId: 'recXTqigG43bXZMMv' },
   { name: 'Santee Ford', recordId: 'recW1VH7PaIy45ejK' },
   { name: 'Summerville Ford', recordId: 'recErbGj2QmX0Ke9T' },
