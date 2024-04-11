@@ -22,7 +22,7 @@ const dealershipsData = [
     "logo": "https://github.com/geomodi/stuff/blob/main/BMW%20Mini%20of%20Sterling%20(rounded).png?raw=true",
     "chartId": "bmw-mini-of-sterling-chart",
     "crm": "eLeads",
-    "crmLogo": "https://github.com/geomodi/stuff/blob/main/drive%20centric.jpg?raw=true"
+    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
   {
     "name": "Downtown Auto Center",
