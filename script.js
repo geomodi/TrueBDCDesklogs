@@ -199,6 +199,7 @@ function updateRefreshInfo(filterValue = '') {
 
   document.getElementById('refresh-info').textContent = `Last refreshed: ${lastRefreshed} | Total dealerships: ${visibleDealerships}`;
 }
+
 function initializeFilter() {
   const filterInput = document.getElementById('filter-input');
   filterInput.addEventListener('input', () => {
@@ -207,18 +208,6 @@ function initializeFilter() {
   });
 }
 
-// After creating and appending the dealership cards
-updateRefreshInfo(); // Update the refresh information
-
-document.addEventListener('DOMContentLoaded', () => {
-  updateRefreshInfo(); // Update the refresh information on page load
-});
-
-window.addEventListener('load', () => {
-  updateRefreshInfo(); // Update the refresh information after page refresh
-});
-
-// Fetch data from Airtable and create charts for each dealership
 // Fetch data from Airtable and create charts for each dealership
 mergedDealerships.forEach(function(dealership) {
   if (dealership.recordId) {
@@ -305,4 +294,158 @@ mergedDealerships.forEach(function(dealership) {
         console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
       });
   }
+});
+function updateAirtableInfoTable() {
+    // Fetch all records from the Airtable table
+    const apiUrl = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}`;
+    fetch(apiUrl, {
+        headers: { 'Authorization': 'Bearer ' + apiKey }
+    })
+    .then(response => response.json())
+    .then(data => {
+        // Transform the records into a format suitable for DataTables
+        const tableData = data.records.map(record => ({
+            dealership: record.fields['Dealership'] || 'N/A',
+            confirmed: record.fields['Confirmed'] || 0,
+            shown: record.fields['Shown'] || 0,
+            missed: record.fields['Missed'] || 0,
+            overdue: record.fields['Overdue'] || 0,
+            internet: record.fields['Internet'] || 0,
+            remainingToday: record.fields['Remaining Today'] || 0,
+            trueBDCToday: record.fields['TrueBDC Today'] || 0 // Ensure default value if null
+        }));
+
+        // Initialize or update DataTable
+        if ($.fn.DataTable.isDataTable('#airtable-info-table')) {
+            var table = $('#airtable-info-table').DataTable();
+            table.clear();
+            table.rows.add(tableData);
+            table.draw();
+        } else {
+            $('#airtable-info-table').DataTable({
+                data: tableData,
+                columns: [
+                    { title: "Dealership", data: "dealership" },
+                    { title: "Confirmed", data: "confirmed" },
+                    { title: "Shown", data: "shown" },
+                    { title: "Missed", data: "missed" },
+                    { title: "Overdue", data: "overdue" },
+                    { title: "Internet", data: "internet" },
+                    { title: "Remaining Today", data: "remainingToday" },
+                    { title: "TrueBDC Today", data: "trueBDCToday" } // Add this column explicitly
+                ]
+            });
+        }
+    })
+    .catch(error => console.error('Error loading the data:', error));
+}
+
+// Call this function to populate the table
+updateAirtableInfoTable();
+
+window.addEventListener('load', () => {
+  updateRefreshInfo(); // Update the refresh information after page refresh
+  document.getElementById('generateReport').addEventListener('click', generateReport);
+});
+function generateReport() {
+  // Create a new PDF document
+  const doc = new jsPDF();
+
+  // Function to fetch data from Airtable for a single dealership
+  const fetchDealershipData = (dealership) => {
+    const { name, recordId } = dealership;
+    const apiUrl = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent(tableName)}/${recordId}`;
+
+    return fetch(apiUrl, {
+      headers: {
+        'Authorization': 'Bearer ' + apiKey
+      }
+    })
+      .then(response => response.json())
+      .then(data => {
+        const record = data.fields;
+        return {
+          name: record['Dealership'] || '',
+          confirmed: parseInt(record['Confirmed']) || 0,
+          shown: parseInt(record['Shown']) || 0,
+          missed: parseInt(record['Missed']) || 0,
+          overdue: parseInt(record['Overdue']) || 0,
+          apptsToday: parseInt(record['Appointments for Today']) || 0,
+          apptsTomorrow: parseInt(record['Appointments for Tomorrow']) || 0,
+          appts3rdDay: parseInt(record['3rd Day Appointments']) || 0,
+          trueBDCToday: parseInt(record['TrueBDC Today']) || 0,
+          internet: parseInt(record['Internet']) || 0,
+          remainingToday: parseInt(record['Remaining Today']) || 0
+        };
+      })
+      .catch(error => {
+        console.error(`Error fetching data from Airtable for ${dealership.name}:`, error);
+        return null; // Return null if there's an error
+      });
+  };
+
+  // Fetch data for all dealerships using Promise.all
+  Promise.all(mergedDealerships.map(fetchDealershipData))
+    .then(dealershipReportData => {
+      // Filter out null values (in case of errors)
+      const validData = dealershipReportData.filter(data => data !== null);
+
+      // Generate the PDF report
+      generatePDF(doc, validData);
+    })
+    .catch(error => {
+      console.error('Error fetching data from Airtable:', error);
+    });
+}
+
+function generatePDF(doc, dealershipReportData) {
+  const pageHeight = doc.internal.pageSize.height;
+  const lineHeight = 12;
+  let currentY = 20;
+
+  dealershipReportData.forEach((dealershipData, index) => {
+    // Add the dealership data to the PDF document
+    doc.setFontSize(12);
+
+    // Check if there's enough space on the current page for this dealership's data
+    const dataHeight = 11 * lineHeight;
+    if (currentY + dataHeight >= pageHeight - 20) {
+      doc.addPage();
+      currentY = 20;
+    }
+
+    doc.text(`Dealership: ${dealershipData.name}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Confirmed: ${dealershipData.confirmed}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Shown: ${dealershipData.shown}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Missed: ${dealershipData.missed}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Overdue: ${dealershipData.overdue}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Appointments for Today: ${dealershipData.apptsToday}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Appointments for Tomorrow: ${dealershipData.apptsTomorrow}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`3rd Day Appointments: ${dealershipData.appts3rdDay}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`TrueBDC Today: ${dealershipData.trueBDCToday}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Internet: ${dealershipData.internet}`, 20, currentY);
+    currentY += lineHeight;
+    doc.text(`Remaining Today: ${dealershipData.remainingToday}`, 20, currentY);
+    currentY += lineHeight;
+
+    currentY += lineHeight;
+  });
+
+  // Save the PDF after all dealership data has been added
+  doc.save('report.pdf');
+}
+document.getElementById('download-xlsx').addEventListener('click', function() {
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.table_to_sheet(document.getElementById('airtable-info-table'));
+    XLSX.utils.book_append_sheet(workbook, worksheet, "TableData");
+    XLSX.writeFile(workbook, 'table.xlsx');
 });
