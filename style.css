@@ -53,12 +53,12 @@
 }
 .chart {
     border-radius: 8px;
-    height: 230px;
+    height: 280px;
     margin: -10px;
 }
 .chart-container {
   width: 100%;
-  height: 230px;
+  height: 290px;
   margin: -10px;
 }
 .crm-logo-container {
@@ -81,7 +81,23 @@
   max-height: 90%;
   object-fit: contain;
 }
+.airtable-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f8f9fa; /* Light grey background */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+#airtable-info-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+#airtable-info-table th, #airtable-info-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
 body {
     font-family: Arial, sans-serif;
     margin: 0;
