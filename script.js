@@ -9,7 +9,6 @@ const dealerships = [
   { name: 'Downtown Subaru', recordId: 'recFRlYkyKEsRYcsz' },
   { name: 'Downtown Toyota', recordId: 'recTWjCIT5HIKXqY9' },
   { name: 'Downtown Used', recordId: 'recA984Aij5t1y4Y2' },
-  { name: 'Gator Chevy', recordId: 'recgk5cQ9uNMBvD5x' },
   { name: 'Priority Toyota', recordId: 'rechlRzCiPxagTvv1' },
   { name: 'South Georgia CDJR', recordId: 'recNg3ZIeQuSwOcI8' },
   { name: 'Antelope Valley Chevrolet', recordId: 'recqH4Xb1vBs8DH2j' },
@@ -49,13 +48,6 @@ const dealershipsData = [
     "name": "Downtown Used",
     "logo": "https://github.com/geomodi/stuff/blob/main/Downtown%20Used%20(rounded).png?raw=true",
     "chartId": "downtown-used-chart",
-    "crm": "eLeads",
-    "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
-  },
-  {
-    "name": "Gator Chevy",
-    "logo": "https://github.com/geomodi/stuff/blob/main/Gator%20Chevy%20(rounded).png?raw=true",
-    "chartId": "gator-chevy-chart",
     "crm": "eLeads",
     "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
   },
