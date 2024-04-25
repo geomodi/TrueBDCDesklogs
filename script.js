@@ -439,7 +439,52 @@ function generateReport() {
             console.error('Error fetching data from Airtable:', error);
         });
 }
+function updateVinSoInfoTable() {
+    const apiUrl = `https://api.airtable.com/v0/${baseId}/${encodeURIComponent('VinSo Desklog')}`;
+    fetch(apiUrl, {
+        headers: {
+            'Authorization': 'Bearer ' + apiKey
+        }
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        const tableData = data.records.map(record => {
+            const fields = record.fields;
+            return {
+                name: fields && fields['Name'] ? fields['Name'] : 'N/A',
+                inbounds: fields && fields['Inbounds'] ? fields['Inbounds'] : 0,
+                outbounds: fields && fields['Outbounds'] ? fields['Outbounds'] : 0,
+                texts: fields && fields['Texts'] ? fields['Texts'] : 0,
+                emails: fields && fields['Emails'] ? fields['Emails'] : 0,
+                dueTasks: fields && fields['DueTasks'] ? fields['DueTasks'] : 0,
+                overDue: fields && fields['OverDue'] ? fields['OverDue'] : 0,
+                sold: fields && fields['Sold'] ? fields['Sold'] : 0,
+                updated: fields && fields['Updated'] ? fields['Updated'] : 'N/A'
+            };
+        });
 
+        $('#vinso-info-table').DataTable({
+            data: tableData,
+            columns: [
+                { title: "Name", data: "name" },
+                { title: "Inbounds", data: "inbounds" },
+                { title: "Outbounds", data: "outbounds" },
+                { title: "Texts", data: "texts" },
+                { title: "Emails", data: "emails" },
+                { title: "Due Tasks", data: "dueTasks" },
+                { title: "Overdue", data: "overDue" },
+                { title: "Sold", data: "sold" }
+            ],
+            destroy: true
+        });
+    })
+    .catch(error => console.error('Error loading VinSo data:', error));
+}
 function generatePDF(doc, dealershipReportData) {
   const pageHeight = doc.internal.pageSize.height;
   const lineHeight = 12;
@@ -485,11 +530,14 @@ function generatePDF(doc, dealershipReportData) {
   });
 
   // Save the PDF after all dealership data has been added
-  doc.save('report.pdf');
+doc.save('report.pdf');
 }
+
 document.getElementById('download-xlsx').addEventListener('click', function() {
     const workbook = XLSX.utils.book_new();
     const worksheet = XLSX.utils.table_to_sheet(document.getElementById('airtable-info-table'));
     XLSX.utils.book_append_sheet(workbook, worksheet, "TableData");
     XLSX.writeFile(workbook, 'table.xlsx');
 });
+
+updateVinSoInfoTable();
