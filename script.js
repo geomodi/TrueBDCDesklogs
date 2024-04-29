@@ -27,6 +27,10 @@ const dealerships = [{
         recordId: 'rechlRzCiPxagTvv1'
     },
     {
+        name: 'South Georgia CDJR',
+        recordId: 'recNg3ZIeQuSwOcI8'
+    },
+    {
         name: 'Antelope Valley Chevrolet',
         recordId: 'recqH4Xb1vBs8DH2j'
     },
@@ -74,6 +78,13 @@ const dealershipsData = [{
         "name": "Priority Toyota",
         "logo": "https://github.com/geomodi/stuff/blob/main/Priority%20Toyota%20(rounded).png?raw=true",
         "chartId": "priority-toyota-chart",
+        "crm": "eLeads",
+        "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
+    },
+    {
+        "name": "South Georgia CDJR",
+        "logo": "https://github.com/geomodi/stuff/blob/main/South%20Georgia%20CDJR%20(rounded).png?raw=true",
+        "chartId": "south-georgia-cdjr-chart",
         "crm": "eLeads",
         "crmLogo": "https://github.com/geomodi/stuff/blob/main/eleads.png?raw=true"
     },
