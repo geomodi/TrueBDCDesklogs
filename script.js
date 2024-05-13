@@ -24,7 +24,7 @@ const dealerships = [{
     },
     {
         name: 'Priority Toyota',
-        recordId: 'rechlRzCiPxagTvv1'
+        recordId: 'recIGUkfOxAeM7JCI'
     },
     {
         name: 'Antelope Valley Chevrolet',
