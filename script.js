@@ -29,10 +29,6 @@ const dealerships = [{
     {
         name: 'Antelope Valley Chevrolet',
         recordId: 'recqH4Xb1vBs8DH2j'
-    },
-    {
-        name: 'Glendale Nissan',
-        recordId: 'recBqsmzIvsVpi8ct'
     }
 ];
 const dealershipsData = [{
@@ -81,13 +77,6 @@ const dealershipsData = [{
         "name": "Antelope Valley Chevrolet",
         "logo": "https://github.com/geomodi/stuff/blob/main/Antelope%20Valley%20Chevrolet%20(rounded).png?raw=true",
         "chartId": "antelope-valley-chevrolet-chart",
-        "crm": "VinSolutions",
-        "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
-    },
-    {
-        "name": "Glendale Nissan",
-        "logo": "https://github.com/geomodi/stuff/blob/main/Glendale%20Nissan%20(rounded).png?raw=true",
-        "chartId": "glendale-nissan-chart",
         "crm": "VinSolutions",
         "crmLogo": "https://github.com/geomodi/stuff/blob/main/vinso.png?raw=true"
     }
